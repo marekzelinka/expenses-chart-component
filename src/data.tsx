@@ -9,7 +9,7 @@ export type Data = {
   spending: {
     amount: number;
     change: number;
-    changeType: "positive" | "negative";
+    changeType: "increase" | "decrease";
   };
 };
 
@@ -48,6 +48,6 @@ export const data = {
   spending: {
     amount: 47833,
     change: 0.024,
-    changeType: "negative",
+    changeType: "increase",
   },
 } satisfies Data;

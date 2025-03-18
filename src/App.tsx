@@ -11,7 +11,11 @@ import { data } from "@/data";
 import { cn } from "@/lib/utils";
 import { toCurrencyFromCent } from "@/utils/currency";
 import { toPercentageFromNumber } from "@/utils/percentages";
-import { BarChartBigIcon } from "lucide-react";
+import {
+  BarChartBigIcon,
+  TrendingDownIcon,
+  TrendingUpIcon,
+} from "lucide-react";
 
 function App() {
   return (
@@ -53,12 +57,30 @@ function App() {
                   <div className="flex flex-col gap-0 text-right">
                     <dd
                       className={cn(
-                        "font-medium",
-                        data.spending.changeType === "negative"
-                          ? "text-destructive"
-                          : "text-foreground",
+                        "flex items-baseline justify-end gap-2 text-sm font-medium",
+                        data.spending.changeType === "increase"
+                          ? "text-red-500"
+                          : "text-green-500",
                       )}
                     >
+                      {data.spending.changeType === "increase" ? (
+                        <TrendingUpIcon
+                          aria-hidden
+                          className="size-4 shrink-0 self-center text-red-500"
+                        />
+                      ) : (
+                        <TrendingDownIcon
+                          aria-hidden
+                          className="size-4 shrink-0 self-center text-green-500"
+                        />
+                      )}
+                      <span className="sr-only">
+                        {" "}
+                        {data.spending.changeType === "increase"
+                          ? "increased"
+                          : "decreased"}{" "}
+                        by{" "}
+                      </span>
                       {toPercentageFromNumber(data.spending.change)}
                     </dd>
                     <dd className="text-xs text-muted-foreground">
