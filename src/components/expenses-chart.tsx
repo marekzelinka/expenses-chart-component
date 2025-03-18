@@ -26,7 +26,11 @@ export function ExpensesChart({ expenses }: { expenses: Expense[] }) {
           tickFormatter={(day: string) => day[0].toUpperCase() + day.slice(1)}
         />
         <ChartTooltip content={() => null} />
-        <Bar dataKey="amount" fill="var(--color-amount)" radius={8}>
+        <Bar
+          dataKey="amount"
+          radius={8}
+          className="fill-(--color-amount) transition-colors hover:fill-(--color-amount)/70"
+        >
           <LabelList
             position="top"
             offset={6}
