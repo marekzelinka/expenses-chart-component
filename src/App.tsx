@@ -1,3 +1,4 @@
+import { ExpensesChart } from "@/components/expenses-chart";
 import {
   Card,
   CardContent,
@@ -43,6 +44,7 @@ function App() {
               <CardTitle className="text-xl">Spending - Last 7 days</CardTitle>
             </CardHeader>
             <CardContent>
+              <ExpensesChart expenses={data.expenses} />
               <Separator />
             </CardContent>
             <CardFooter>
